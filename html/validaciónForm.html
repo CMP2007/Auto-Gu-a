@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        input:invalid {
+        border: 2px dashed red;
+        }
+
+        input:invalid:required {
+        background-image: linear-gradient(to right, pink, lightgreen);
+        }
+
+        input:valid {
+        border: 2px solid black;
+        }
+    </style>
+    <title>Validación de los Formularios</title>
+</head>
+<body>
+    <section>
+        <h1>Validación</h1>
+        <div id="validacion">
+            <p>Este es un aspecto muy importante al implementar un formularios ya que nos permite definir que la información ingresada por los usuarios cumpla con las caracteriticas y necesidades de nuestra paguina, en otras palabras podemos defimir no solo el tipo de dato que deseamos recibir, si no que tambien el donde hacerlo y las caracteriticas obligatorias de esta información.</p>
+            <p>Las validaciones se pueden aplicar tanto en el <b>lado del navegador (frontend) </b> como en el <b>lado del servidor (backend) </b>, en el caso de HTML unicamamente se interactua con las validacines del lado del navegador, las validaciones en el navegador actuan como un primer filtro para la información ingresada en la paguina, lo cual las convierte en un recurso muy util para conseguir un mejor funcionamento en nuestra paguina. </p>
+            <p>Por lo tanto las validaciones en el navegador nos ayudan a:</p>
+            <ul>
+                <li>Evitar el ingreso de información erronea</li>
+                <li>Validar que la información ingresada tenga el formato adecuado</li>
+                <li>Verificar que toda aquella información que consideremos indispensable no sea omitida</li>
+                <li>En algunos casos que la información ingresada sea real</li>
+            </ul>
+            <p><b>Nota: Cabe resaltar que si bien estas validaciones son muy buena implementación no debe ser la unica medida de seguridad de la paguina, ya que por muy bien estructuradas y verificadas que esten un usuario malicioso aún puede alterar e inyectar datos en el envio de estos hacia el servidor</b></p>
+        </div>
+        <div id="tiposValidaciones">
+            <h2>Tipos de validación</h2>
+            <ul>
+                <li>
+                    <h3>Validación integrada de formularios</h3>
+                    <p> Una de las caracteriticas más resaltadas de los elementos de formulario modernos es su capacidad para validar la mayoria de los datos sin recurrir a JavaScript, esto atravez del uso de funciones las cuales estan disponibles de forma inherente a la mayoria de los elementos</p>
+                    <p>Si los datos ingresados en el elemento cumple con todas pautas definidas para este se considera valido, en aquellos elementos definidos como validos :</p>
+                    <ol>
+                        <li>El elemento es compatible con la pseudo clase de CSS: ":valid", la cual permite aplicar estilos espesificamente a todos aquellos elementos validos</li>
+                        <li>Si el usuario intenta enviar los datos del formulario el navegador lo hara, siempre y cuando no exista otra limitante que lo impida</li>
+                    </ol>
+                    <p>Cuando un elemento no es valido: </p>
+                    <ol>
+                        <li>El elemento coincide con la pseudo clase CSS: ":invalid" la cual le permite aplicar estilos CSS a todos aquellos elementos que no sea valido</li>
+                        <li>Si el usuario intenta enviar la información el navegador rechazara su acción y mostrará un mensaje de error hasta que se cumplan todos los parametros</li>
+                        <p><b>Nota: A continuación se nombran los terminos utlizados para los casos de error que pudiesen cometer los usuarios incumpliendo las pautas del formulario resultando en elementos interpretados como invalidos:</b></p>
+                        <ul>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/badInput" target="_blank">badInput</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/patternMismatch" target="_blank">patternMismatch</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/rangeOverflow" target="_blank">rangeOverflow</a> o <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/rangeUnderflow" target="_blank">rangeUnderflow</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/stepMismatch" target="_blank">stepMismatch</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/tooLong" target="_blank">tooLong</a> o <a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/tooShort" target="_blank">tooShort</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/typeMismatch" target="_blank">typeMismatch</a></li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/ValidityState/valueMissing" target="_blank">valueMissing</a></li>
+                        </ul>
+                    </ol>    
+                    <h4>Un ejemplo de la implementación de los estilos CSS segun el status del elementos es:</h4>
+                    <img src="./img/ejmRequired2.PNG" alt="">
+                    <p>Este codigo retorna un cuadro de texto al que se le hacignan estilos en base a su estatus, es decir al usar el atributo "required" la entrada será conpatible con las pseudo-clases ":required", ":invalid" y ":valid", por otro lado el elemento será considerado invalido en aquellos casos en los que se este por enviar el elemento bacio, por lo cual se mostrara un mensaje de elerta notificando de la falta.</p>
+                    <p><b>Nota: El indicar cuando un el campo de un formulario es obligatoria no solo es una buena practica si no que es un requisito de las normas de accesibilidad de la WCAG </b></p>
+                    <p><b>Nota: Tambien es una buena practica el preguntar solo lo necesario a los usuarios, los formularios excesibamente largos así como la información inrelebante pueden ser contra producentes</b></p>
+                    <h4>Los atributos de validación son:</h4>
+                    <ul>
+                        <li>
+                            <b>Required: </b> Define el si alguno de los campos es de caracter obligatorio para poder realizar el envio de los datos del formulario, por lo tanto mostrara un mensaje de error mientras que esta entrada se encuentre bacia, la cual tambien sera tomada como invalida
+                             <br><br><img src="./img/ejmRequired1.PNG" alt=""> <br><br>
+                        </li>
+                        <li>
+                            <p><b>Minlength y Maxlength: </b> Definen la longitud maxima y minima de los datos textuales, por lo que el elemento sera considerado invalido si el texto en este es inferior al minimo o superior al maximo definidos con estos atributos</p>
+                            <p><b>Nota: los navegadores normalmente no permiten escribir un valor más largo de lo esperado</b></p>
+                            <p><b>Nota:  Un buena herramienta para la experienci del usuario es utilizar el atributo Maxlength junto con JavaScript para mostrar un contador de caracteres al usuario (por ejmemplo como lo hace twitter al twittear)</b></p>
+                        </li><br>
+                        <li>
+                            <p><b>Min y Max: </b> Espesifica los valores minimo y maximo de los elementos de entrada numericos, en otras palabras definen el rango en el que se debe encontrar el n{umero para ser aceptado, si el número no se encuentra dentro de estre el elemento se considerará invalido.</p>
+                            <h4>Ejemplo:</h4>
+                            <img src="./img/ejmValidacionLimites.PNG" alt="">
+                            <p>Este codigo define la cantidad de caracteres que pueden ser añadididos en un cuadro de texto así como el rango númerico que será aceptado en el elemento number, por lo tanto en el elemento texto si no cumple con el rango de caracteres requerido el elemento es tratado como invaldo, del mismo modo si el numero ingresado en el number no se encuentra en tre 1 y 10 sera considerado invalido, a continuación se muestra el resultado funcional de este codigo:</p>
+                                <form>
+                                    <div>
+                                      <label for="choose">Would you prefer a banana or a cherry?</label>
+                                      <input
+                                        type="text"
+                                        id="choose"
+                                        name="i-like"
+                                        required
+                                        minlength="6"
+                                        maxlength="6" />
+                                    </div>
+                                    <div>
+                                      <label for="number">How many would you like?</label>
+                                      <input type="number" id="number" name="amount" value="1" min="1" max="10" />
+                                    </div>
+                                    <div>
+                                      <button>Submit</button>
+                                    </div>
+                                </form>
+                            <p><b>Nota: elementos tipo "number" "range" y "date" tambien pueden adoptar el atributo "step" el cual define en que cantidad incrementara o se reducira el valor cundo se usen controles de entrada (flechas arriba y abajo) </b></p>  
+                        </li><br>
+                        <li><b>Type: </b> Espesifica el tipo de dato que sera manejado por el elemento, como por ejemplo correo o número etc</li><br>
+                        <li>
+                           <p> <b>patter: </b> Este atributo define una <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank">expresión regular</a> que sera aceptada en el elemento, una expresión regular es una cadena de caracteres la cual al ser definida esta es identificada y diferencuada de cualquier otra por el navegador, por lo cual el atributo "patter" permite definir que unicamamete sean aceptadas ciertas cadenas de caracteres (numeros o palabras) que hallamos definido con anterioridad, por ejemplo:</p>
+                           <p><b>Ejemplo funcional:</b></p>
+                            <img src="./img/ejmValidacionPatter.PNG" alt="">
+                            <p><b>El resultado de ese codigo es el siguiete:</b></p>
+                            <form>
+                                <label for="choose">Would you prefer a banana or a cherry?</label>
+                                <input id="choose" name="i-like" required pattern="[Bb]anana|[Cc]herry" />
+                                <button>Submit</button>
+                            </form>
+                            <p>Las expresiones regulares diferencian entre mayusculas y minusculas por lo que se a definido la compatibilidad de los caracteres en el atributo "patter", por lo tato el input acepta cuatro expresiones regulares las cuales son: Banana, banana, Cherry y cherry, en este tipo de casos mientras la cadena de caracteres que el usuario ingrese sea diferente a la definida en "patter" este elemento sera reconosido como invalido. </p>
+                            <p><b>Nota: para los stilos CSS de este ejemplo se utilizaron los basados en el status del elemento, los cuales ya fueron mostrados con anterioridad</b></p>
+                        </li>
+                        <p><b>Nota: Notodos los elementos input necesitan aplicar el atributo "patter" para definir expresiones regulares, por ejmplo el elemento "email", el cual define que el texto ingresado en este concuerde con el formato de un correo electronico</b></p>
+                        <p><b>Nota: El elemento "textarea" no es compatible con el atributo "patter"</b></p>
+                    </ul>
+                </li>
+                <li>
+                    <h3>validacion con JavaScript</h3>
+                    <p>Se trata de todo aquel friendworks o codigo propio JavaScript utilizados para validar un formulario</p>
+                    <ul>
+                        <li><b>Pro: </b> Es completamnete personalizable por lo que puede cubrir cualquier tipo de necesidad</li>
+                        <li><b>Pro: </b> En el caso de que el codigo este escrito adecuadamente puede brindar un mayor nivel de seguridad a la paguina</li><br><br>
+                        <li><b>Contra: </b> Su inplementación es más compleja ya que es necesario el rearla por completo o recurrir a un framework</li>
+                        <li><b>contra: </b> Debido a su complejidad es más probable que se cometa algún error o exista alguna bulnerabilidad en estas validaciones, por lo que se chequeo debe ser más exaustivo</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <p></p>
+        </div>
+    </section>
+</body>
+</html>
