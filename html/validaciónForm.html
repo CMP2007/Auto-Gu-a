@@ -35,10 +35,10 @@
             </ul>
             <p><b>Nota: Cabe resaltar que si bien estas validaciones son muy buena implementación no debe ser la unica medida de seguridad de la paguina, ya que por muy bien estructuradas y verificadas que esten un usuario malicioso aún puede alterar e inyectar datos en el envio de estos hacia el servidor</b></p>
         </div>
-        <div id="tiposValidaciones">
-            <h2>Tipos de validación</h2>
-            <ul>
-                <li>
+        <h2>Tipos de validación</h2>
+        <ul>
+            <li>
+                <div id="validacionIntegrada">
                     <h3>Validación integrada de formularios</h3>
                     <p> Una de las caracteriticas más resaltadas de los elementos de formulario modernos es su capacidad para validar la mayoria de los datos sin recurrir a JavaScript, esto atravez del uso de funciones las cuales estan disponibles de forma inherente a la mayoria de los elementos</p>
                     <p>Si los datos ingresados en el elemento cumple con todas pautas definidas para este se considera valido, en aquellos elementos definidos como validos :</p>
@@ -70,7 +70,7 @@
                     <ul>
                         <li>
                             <b>Required: </b> Define el si alguno de los campos es de caracter obligatorio para poder realizar el envio de los datos del formulario, por lo tanto mostrara un mensaje de error mientras que esta entrada se encuentre bacia, la cual tambien sera tomada como invalida
-                             <br><br><img src="./img/ejmRequired1.PNG" alt=""> <br><br>
+                            <br><br><img src="./img/ejmRequired1.PNG" alt=""> <br><br>
                         </li>
                         <li>
                             <p><b>Minlength y Maxlength: </b> Definen la longitud maxima y minima de los datos textuales, por lo que el elemento sera considerado invalido si el texto en este es inferior al minimo o superior al maximo definidos con estos atributos</p>
@@ -84,8 +84,8 @@
                             <p>Este codigo define la cantidad de caracteres que pueden ser añadididos en un cuadro de texto así como el rango númerico que será aceptado en el elemento number, por lo tanto en el elemento texto si no cumple con el rango de caracteres requerido el elemento es tratado como invaldo, del mismo modo si el numero ingresado en el number no se encuentra en tre 1 y 10 sera considerado invalido, a continuación se muestra el resultado funcional de este codigo:</p>
                                 <form>
                                     <div>
-                                      <label for="choose">Would you prefer a banana or a cherry?</label>
-                                      <input
+                                    <label for="choose">Would you prefer a banana or a cherry?</label>
+                                    <input
                                         type="text"
                                         id="choose"
                                         name="i-like"
@@ -94,19 +94,19 @@
                                         maxlength="6" />
                                     </div>
                                     <div>
-                                      <label for="number">How many would you like?</label>
-                                      <input type="number" id="number" name="amount" value="1" min="1" max="10" />
+                                    <label for="number">How many would you like?</label>
+                                    <input type="number" id="number" name="amount" value="1" min="1" max="10" />
                                     </div>
                                     <div>
-                                      <button>Submit</button>
+                                    <button>Submit</button>
                                     </div>
                                 </form>
                             <p><b>Nota: elementos tipo "number" "range" y "date" tambien pueden adoptar el atributo "step" el cual define en que cantidad incrementara o se reducira el valor cundo se usen controles de entrada (flechas arriba y abajo) </b></p>  
                         </li><br>
                         <li><b>Type: </b> Espesifica el tipo de dato que sera manejado por el elemento, como por ejemplo correo o número etc</li><br>
                         <li>
-                           <p> <b>patter: </b> Este atributo define una <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank">expresión regular</a> que sera aceptada en el elemento, una expresión regular es una cadena de caracteres la cual al ser definida esta es identificada y diferencuada de cualquier otra por el navegador, por lo cual el atributo "patter" permite definir que unicamamete sean aceptadas ciertas cadenas de caracteres (numeros o palabras) que hallamos definido con anterioridad, por ejemplo:</p>
-                           <p><b>Ejemplo funcional:</b></p>
+                        <p> <b>patter: </b> Este atributo define una <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank">expresión regular</a> que sera aceptada en el elemento, una expresión regular es una cadena de caracteres la cual al ser definida esta es identificada y diferencuada de cualquier otra por el navegador, por lo cual el atributo "patter" permite definir que unicamamete sean aceptadas ciertas cadenas de caracteres (numeros o palabras) que hallamos definido con anterioridad, por ejemplo:</p>
+                        <p><b>Ejemplo funcional:</b></p>
                             <img src="./img/ejmValidacionPatter.PNG" alt="">
                             <p><b>El resultado de ese codigo es el siguiete:</b></p>
                             <form>
@@ -120,21 +120,118 @@
                         <p><b>Nota: Notodos los elementos input necesitan aplicar el atributo "patter" para definir expresiones regulares, por ejmplo el elemento "email", el cual define que el texto ingresado en este concuerde con el formato de un correo electronico</b></p>
                         <p><b>Nota: El elemento "textarea" no es compatible con el atributo "patter"</b></p>
                     </ul>
-                </li>
-                <li>
+                </div>
+            </li>
+            <li>
+                <div id="ValidacionJavaScript">
                     <h3>validacion con JavaScript</h3>
-                    <p>Se trata de todo aquel friendworks o codigo propio JavaScript utilizados para validar un formulario</p>
+                    <p>Se trata de todo aquel friendworks o codigo propio JavaScript utilizados para validar un formulario, Este tipo de validaciones tiene la vetaja de ser de caracter completammente persobalizable para el formulario, por lo que puede cubrir cualquier tipo de necesidad de información, e incluso si el codigo se encuentra lo bastante bien estructurado estas validaciones tambien pueden brindar un mayor nivel de seguridad a la paguina. </p>
+                    <P>Sin embargo tambien cuenta con la desventaja de que el inplementar estas validaciones puede ser bastante más complejo que hacerlo con las validaciones integradas HTML ya que es necesario formular un codigo propio o incluir una biblioteca o friendwork.</P>
+                    <p><p>Debido a que estas validaciones inbolucran un lenguaje de programamción externo como lo es JavaScript es necesario tener presentes ciertas cualidades de este, como lo son el ROM y las API, esto debido a que estas funcionalidades y caracteriticas JavaScript tiene la capacidad de percutir en los elementos HTML.</p></p>
+                    <p>Existen dos tipos de validaciones JavaScript, las que se basan en la API de validación de resitriciones y aquellas validaciones sin ninguna API integrada.</p>
+                    <h4>API de validación de restricciones</h4>
+                    
+                    <p>Este caso consta de un conjunto de metodos y porpiedades disponibles en las siguietes interfaces DOM de los elemetos de formularios.</p>
                     <ul>
-                        <li><b>Pro: </b> Es completamnete personalizable por lo que puede cubrir cualquier tipo de necesidad</li>
-                        <li><b>Pro: </b> En el caso de que el codigo este escrito adecuadamente puede brindar un mayor nivel de seguridad a la paguina</li><br><br>
-                        <li><b>Contra: </b> Su inplementación es más compleja ya que es necesario el rearla por completo o recurrir a un framework</li>
-                        <li><b>contra: </b> Debido a su complejidad es más probable que se cometa algún error o exista alguna bulnerabilidad en estas validaciones, por lo que se chequeo debe ser más exaustivo</li>
+                        <li>"HTMLButtonElement" (representa un "button")</li>
+                        <li>"HTMLFieldSetElement" (representa un "fieldset")</li>
+                        <li>"HTMLInputElement" (representa un "input")</li>
+                        <li>"HTMLOutputElement" (representa nn "output")</li>
+                        <li>"HTMLSelectElement" (representa un "select")</li>
+                        <li>"HTMLTextAreaElement" (representa un "textarea")</li>
                     </ul>
-                </li>
-            </ul>
-            
-            <p></p>
-        </div>
+                    <p><b>La API de validación de restricciones hace que las siguientes propiedades estén disponibles en los elementos anteriores.</b></p>
+                    <ul>
+                        <li>
+                            <p><b>ValidationMessage: </b> Este atributo debuelve un mensage de error descriptvo de las condiciones de validación que el elemento no cumple, segun cual sea el caso este atributo puede tener tres retornos posibles:</p>
+                            <ol>
+                                <li>En caso de que el elemento HTML tal como se a mencionado incumpla alguna pauta de validación (elemento invalido) el retorno del atributo será un mensaje de error previamente definido atravez de JavaScript</li>
+                                <li>En el caso de que el elemento HTML  no sea un candidato viable para la empleación de este atributo (willValidate: false) este retornara un valor "false"</li>
+                                <li>Por ultimo caso si el elemento cumple con todas las condiciones de validación (elemento valido) este atributo retornara una cadena vacia</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <p><b>Validity: </b> Retorna un elemento "validityState" el cual puede contener una de varias propiedades las cuales describen el estado de valides del elemento HTML, entre los cuales algunos de los más comunes son:</p>
+                            <ol>
+                                <li><p><b>patternMismatch:</b> Se acciona en el caso de que el valor ingresado no coincida con el patron definido, por lo anto en este caso retorna un "true", en cuyo caso el elemento coincidira con la pseudo-clase CSS :invalid, por otro lado en caso de que el valor si cumpla con el patron definido unicamente retorna un "false"</p></li>
+                                <li><p><b>tooLong: </b> En caso de que la lungitud del valor ingresado sea inferior o igual a la longitud maxima definida el atributo "maxlength" retornará un valor "false", sin embargo  en caso de que la longitud del valor supere esta pauta entonces en su lugar retornara una valor "true", en cuyo caso el elemento HTML coincidira con la pseudo-clase CSS ":invalid"</p></li>
+                                <li><p><b>tooShort: </b> En el caso de que la longitud del valor ingreado sea superior o igual a la longitud minima definida en el atributo "minlength" el retorno de este elemento será un "false", sin embargo si se inclumple esta pauta y el valor ingresado posee una longitud inferior a la minima entonces el retorno del elementos será un "true", en dicho caso el elemento HTML coincidira con la pseudo-clase CSS ":invalid" </p></li>
+                                <li><p><b>rangeOverflow: </b> Este elemento mide el si el valor de un elemento "number" se encuetra por debajo del valor maximo definido en el atributo "max", si esta condición se cumple el retorno del elemeto será un valor "false", por otro lado si esta condición se incumple entonces el elemento retornara un valor "true", por lo tanto el elemento HTML coincidira con las pseudo-clases CSS ":invalid" y "out-of-range" </p></li>
+                                <li><p><b>rangeUnderflow: </b> Comprueba el si el valor númerico de un elemento "number" se encuentra por encima del valor minimo establecido en el atributo "min", en caso de que esta condición sea cumplida el retorno del alemento será "false", por otro lado si esta pauta no es cumplida y el valor ingresado se encuentra por debajo del minimo el retorno será un valor "true", en cuyo caso el elemto HTML coincidira con las pseudo-clases ":invalid" y "out-of-range" </p></li>
+                                <li><p><b>typeMismatch: </b> Este elemento comprueba si el valor introducido posee la sintaxis requerida, de cumplirse esta pauta el retorno será una valor "false", de otra manera si esta pauta es incumplida el retorno de esta será un valor "true" en cuyo caso el elemento HTML coincidira con la pseudo-clase CSS ":invalid"</p></li>
+                                <li><p><b>valid: </b> Comprueba el si el elemento HTML cumple con todas las restricuines de validación, en el caso de que así sea el elemto retorna un valro "true" y coincidirá con la pseudo-clase CSS ":valid", en el caso contrario de que el elemento incumpla alguna de las restriciones entoces el retorno será "false" y de este modo el elemeto HTML coincidira con la pseudo-clase CSS :invalid</p></li>
+                                <li><p><b>valueMissing: </b> Retorna "true" en el caso de que el elemento HTML requiera un valor de forma ibligatoria, sin embargo este se encuentre vacio de este modo el elemeto HTML coincidira con la pseudo-clase :invalid, si se da el caso contrario entoces el retorno será un valor "false"</p></li>
+                                <li><p><b>willValidate: </b> Retorna "true" siempre que el elemento HTML sea validado antes de enviarlo, si se da el caso contraio el retorno será "false", este atributo no hara que el elemeto HTML coincida con alguna pseudo-clase CSS</p></li>
+                            </ol>
+                            <p><b>La API de validación de restricciones también pone a disposición los siguientes métodos en los elementos anteriores y el elemento de formulario. </b></p>
+                            <ol>
+                                <li><p><b>checkValidity(): </b> ESta función retorna "true" en caso de que el elemento no tenga problemas de validación, en caso de que se de el caso contrario el retorno de la funciñon sera "false", a la vez que iniciara un "evento de elemento invalido"</p></li>
+                                <li><p><b>reportValidity(): </b>Esta función reporta cambios invalidos usando eventos, este metodo es util en conjunto de "preventDefault()"" en un controlador de eventos "onSubmit"</p></li>
+                                <li><p><b>setCustomValidity(mensaje): </b>Establece un mensaje de error personalizado, el cual se mostrará en el caso de que el elemento no cumpla las restricions de validación definidas, esto permite utilizar codigo JavaScript para personalizar dicho mensaje diferenciando de los mesajes de error asignados por defecto por el navegador</p></li>
+                            </ol>
+                        </li>
+                    </ul>
+                    <h4>Implementación de un mensaje de error personalizado</h4>
+                    <p>Como se acaba de mensionar es posible utilizar JavaScript para configurar un mesaje de erro personalizado, el cual se mostrara a los usuarios en aquellos casos en los que se incumplan las pautas de validación inpuestas en el formulario.</p>
+                    <p>Sin embargo el recurrir a este tipo de metodos de validación conlleva cietras desventajas como lo son :</p>
+                    <ul>
+                        <li>No existe una forma establecida de modifivar su aspecto mediante CSS</li>
+                        <li>Depende en gran medida de la configuración regional del navegador, por lo que se pudiese dar el caso de que el mensaje de error se muestre en un lenguaje diferente al de la paguina web</li>
+                    </ul>
+                    <p>Aún así el personificar estos mensajes personalizados es uno de los casos de uso más comunes de la API de validación de restricciones</p>
+                    <div id="EjmValidacionJSDiv" >
+                    <h4>Ejemplo de uso:</h4>
+                    <p>HTML:</p>
+                    <img src="./img/ejmValidacionJS1.PNG" alt="">
+                    <p>JavaScript:</p>
+                    <img src="./img/ejmValidacionJS2.PNG" alt="">
+                    <p>Aquí almacenamos una referencia a la entrada de correo electrónico, luego le agregamos un detector de eventos que ejecuta el código contenido cada vez que se cambia el valor dentro de la entrada.</p>
+                    <p>Dentro del código contenido, verificamos si la propiedad valid.typeMismatch de la entrada de correo electrónico devuelve verdadero, lo que significa que el valor contenido no coincide con el patrón de una dirección de correo electrónico bien formada. Si es así, llamamos al método setCustomValidity() con un mensaje personalizado. Esto hace que la entrada no sea válida, de modo que cuando intenta enviar el formulario, el envío falla y se muestra el mensaje de error personalizado.</p>
+                    <p>Si la propiedad validad.typeMismatch devuelve falso, llamamos al método setCustomValidity() con una cadena vacía. Esto hace que la entrada sea válida, por lo que se enviará el formulario.</p>
+                    <p><b>A continuación se muestra el resultado del codigo de ejemplo:</b></p>
+                        <form>
+                            <script>
+                                const email = document.getElementById("mail");
+
+                                email.addEventListener("input", (event) => {
+                                if (email.validity.typeMismatch) {
+                                    email.setCustomValidity("I am expecting an email address!");
+                                } else {
+                                    email.setCustomValidity("");
+                                }
+                                });
+                            </script>
+                            <label for="mail">
+                              Por favor ingresa una dirección de correo electronico:
+                            </label>
+                            <input type="email" id="mail" name="mail" />
+                            <button>Submit</button>
+                          </form>
+                    </div>
+                    <p>Un buen complemento para las validaciones basadas en JavaScript es el atributo <b>"novalidate"</b> el cuel indica el navegador que no debe de realizar la validación integrada por defecto, de ese modo no se mostraran los mensajes de error automaticos, por su parte este atributo no deshabilita el soporte para la API de validación de restriciones ni la compativilidad con las pseudo-clases CSS, por lo tanto podremos mostrar sin incombeneinte nuestros mensajes de error personalizados.</p>
+                    <h4>Validación de formlarios sin una API integrada</h4>
+                    <p>Para estructurar la validaciones de esta forma es necesario tener en cuanta ciertas deferencias que repercuten en el codigo:</p>
+                    <ol>
+                        <li>
+                            <p>La primera diferensiación consiste en que la pseudo-clase ":invalid" es necesario definirla como una clase más, ya que al no trabajar con la API es necesario realizar la vinculación xon esta de forma manual</p>
+                        </li>
+                        <li>
+                            <p>La seguna consiste en estructurar el codigo JavaScript desde cero, teniendo en cuenta todos los aspectos intrisecos del codigo, desde el en que ocaciones no se va a aneviar la información, que mensaje se mostrara, de que forma se realizara la validación etc.</p>
+                        </li>
+                    </ol>
+                    <p>A continuación se muestra un ejemplo algo más completo de una validación JavaScript sin el uso de la API:</p>
+                    <h4>HTML</h4>
+                    <img src="./img/ejmValidacionJS3.PNG" alt="">
+                    <h4>CSS</h4>
+                    <img src="./img/ejmValidacionJS4.PNG" alt="">
+                    <img src="./img/ejmValidacionJS5.PNG" alt="">
+                    <h4>JavaScript</h4>
+                    <img src="./img/ejmValidacionJS6.PNG" alt="">
+                    <img src="./img/ejmValidacionJS7.PNG" alt="">
+                    <p><b>Nota: Una buna pactica al crear codigo JavaScript u otro lenguaje de programamción es procurar que el lenguaje sea reutilizable para otros elementos, formularios e incluso otras paguinas, de esa forma se puede simplificar y agilzar el desarrollo de la paguina. </b></p>
+                </div>
+            </li>
+        </ul>
     </section>
 </body>
 </html>

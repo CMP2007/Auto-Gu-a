@@ -1,16 +1,26 @@
 body{
-    margin: 200px;
+    margin: 150px;
     margin-top: 100px;
     background-color: aliceblue;
+    
 }
 div{
     background-color: rgb(245, 185, 108);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
 }
 section{
     background-color: aquamarine;
-    padding: 30px;
+    padding: 25px;
+    
 }
 h2, 
 h1{
     text-align: center;
+}
+#EjmValidacionJSDiv{
+    background-color: rgb(176, 240, 163);
+    padding-top: 5px;
+    padding-bottom: 25px;
 }
