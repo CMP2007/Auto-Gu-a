@@ -8,8 +8,8 @@
     <title>Envio de datos</title>
 </head>
 <body>
-    <h1>Envio de datos de un formulario HTML</h1>
     <section>
+        <h1>Envio de datos de un formulario HTML</h1>
         <div id="introduccion">
             <p>Si se simplifica el funcionamiento de las paguinas web se podria definir como la metodologuía "cliente/servidor" la cual consiste en que un "cliente" la mayoria de los casos un navegador realiza una solicitud al servidor solicitando los datos requeridos para llevar a cabo una acción, a su vez el servidor retorn una respuesta hacia el cliente con dichos datos. Por su lado todas estas consultas y respuestas son enviadas atravez de cietos "protocolos" de transmisión de datos, en general uno de los más simples y estandarizados en la web es el protocolo HTTP </p>
             <p>En ese sentido un formulario no es más que un mecanismo simple para que el usuario pueda realizar una consulta o enviar datos hacia un servidor atravez del protocolo HTTP, de hecho  basicamente todos los atributos de un formulario van enfocados a configurar la solicitud que se realizará, a su vez los forularios poseen dos atributos en particular los cuales estan enfoncados en definir de que forma se enviaran los datos haca el servidos, estos atributos son:</p>
@@ -79,7 +79,50 @@
                 <li>Se selecciona la consulta HTTP en el panel izquierdo, los datos se mostraran como una ventana emergente</li>
             </ol>
             <p>Un ejemplo de esto sería:</p>
-            <img src="./img/EjmVerConsultaHTTP.PNG" alt="">
+            <img src="./img/EjmVerConsultaHTTP.PNG" alt=""><br><br>
+            <h4>Visualizar Consultas HTTP del lado del servidor</h4>
+            <p>Es necesario recirdar que HTMLes un lenguaje de programación limitado a estructurar paguinas web, por lotanto se trata de un lenguaje de programamción basico en el ambito frontend, no obstante dado que los datos son enviados atrabes del protocolo HTTP desde el formulario de nuestra paguina hacia el servidor visualizar los datos recibidos en este no esta dentro de las capacidadesde HTML ya que este lenguaje unicamente es interpretado por los navegadores por lo tanto para visualizar y interacuar con los datos de la consulta son necesarios utilizar otros lenguajes de programamción, en particular aquellos que tengan un caracter Backend, un ejemplos de estos son: </p>
+            <ul>
+                <li>Python</li>
+                <li>NodeJS</li>
+                <li>PHP</li>
+                <li>Ruby</li>
+                <li>Java</li>
+                <p>A su vez estos lenguajes requieren de otro elemento llamado entorno de trabajo, la cual es por así decirlo un "habitad" en el cual los lenguajes pueden interpretarse por el computador, a la vez que brindan multiples herrameitnas y opciones utilies a lahora de trabajar</p>
+               <li> Django para Python, o tambien se puede usar Flask, sin embargo Django ofrece más herramientas y opciones</li>
+                <li>Express para Node.js</li>
+                <li>Laravel para PHP</li>
+                <li>Ruby On Rails para Ruby</li>
+                <li>Spring Boot para Java</li>
+            </ul>
+        </div>
+        <div id="casoEspecial">
+            <h3>Caso Especial</h3>
+            <p>Si se da el caso de que sea necesario enviar un archivo con un formulario HTML tendremos que tomar encuenta cierto aspecto del protocolo HTTP, este se trata de un protocolo de texto, esto es ideal cuando enviamos datos comunes ya que la mayoria de estos tambien son datos de texto, sin embargo la cosa cambia cuando enviamos un archivo, ya que este se trata de datos binarios, por lo tanto es necesario cumplir con ciertos requisitos antes de que sea posible realizar el envio del archivo en cuenstión.</p>
+            <h4>Atributo Enctype</h4>
+            <p>Para este tipo de casos existen el atributo "enctype", este atributo es realmente importante ya que se encarga de definir el valor del encabezado del tipo de contenido incluido en la solicitud HTTP, en otras palabra le indica al servidor que rios de datos esta recibiendo. Su valor por defecto es <b> application/x-www-form-urlencoded</b>, lo que significa "estos son datos de formularios que han sido codificados en parámetros de URL'."</p>   
+            <p>Por lo tanto si se desa enviar archivo atravez de un formulario HTML es necesario realizar tres pasos adicioonales:</p>
+            <ol>
+                <li><p>Enviarlo atraves del metodo POST ya que no es posible codificar un archivo a formato URL para enviarlo atravez del metodo GET</p></li>
+                <li><p>Definir el valor del <b>atributo "enctype"</b> como <b>multipart/form-data</b> ya que de este modo los datos se dividiran en varias partes, una para cada archivo enviado a la vez queuna para los datos de textos que pudiesen ser enviados con el formulario</p></li>
+                <li><p>EL tercero es el má loguico, se trata de incluir en el formulario al menos un controlador del tipo  archivo <b>(input type="file")</b> para permitir que los usuarios seleccionen los archivos por enviar</p></li>
+            </ol>
+            <h4>Por ejemplo:</h4>
+            <img src="./img/ejmAtributoEnctype.PNG" alt="">
+            <p><b>Nota: Si es necesario es posible configurar al servidor con un limite de tamaño en los archivo por enviar, para evitar que los usuarios pueda intentar abusar de la paguina </b></p>
+        </div>
+        <div id="Seguridad">
+            <h3>Seguridad</h3>
+            <p>Siempre que se realise algun tipo de envio de datos hacia nuestro servidor esto se puede convertir e una bulnerabilidad que terceros pudiesen aprovechar para atacar nuestra web, la bulnerabilidad en sí no proviene del formulario HTML, si no que proviene del como son manejados los datos por nuestro servidor </p> 
+            <p>Pese a que la seguridad web no es un tema que HTML sea capaz de abordar existen siertas reglas al plantearse la seguridad de una web, La base de todo es desconfiar de todos los usuarios incluyendo de nosotros, despues de todo incluso nuestro usuario puediese llegar a ser suplantado, aparte de eso es necesario considerar que los formularios son los centros de la mayoria de ataques a una web, por lo que todos los datos que sean enviados al servidor deben de ser chequeados sin ninguna excepción </p>
+            <p>Las tres reglas son:</p>
+            <ul>
+                <li><p><b>Cuidado con los caracteres peligrosos: </b> ¿Que evita que se envie codigo malicioso al servidor? por ello es que se recomienda delimitar los caracteres disponibles para nuestro formulario, los caracteres pelogrosos pueden variar en función de que tecnologuía se ejecute en nuestro servidor aún así es muy importante tener gran precausión con las secuencias de caracteres que pudiesen llegar a ser codigo ejecutable</p></li>
+                <li><p><b>Delimitar la cantidad de datos: </b> Otra medida a tomar es delimitar el espacio disponible para ingresar texto a unicamnte el necesario acorde a los datos que estamos solicitando al usuario</p></li>
+                <li><p><b>Almacenar los archivos en entornos aislados: </b> Una gran peligro para una paguina web son los archivos mailicioso, por ello se recomienda albergarlos en un servidor diferente peritiendo su acceso atravez de un sub-dominio o incluso atravez de un dominio completamnete diferente</p></li>
+            </ul>
+            <p>Siguiedo estas tres reglas es posible protegerse contra la mayoria de las bulnerabilidades de una paguina web, sin embargo no es suficiente con esto lo recomendable es siempre buscar un tercero experimentado que cheque la seguridad de la paguina, ya que de ese modo se puede encontrar nuevos puntos debiles de los cuales antesn no se tenia conciencia.</p>
+            <p><b>Nota: se puede leer más aserca de la seguridad de nuestra web en <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security"> este enlace</a></b></p>
         </div>
     </section>
 </body>
