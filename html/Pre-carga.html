@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Imagen con Cors</title>
+</head>
+<body>
+    <section>
+        <h1>Precargar Contenido</h1>
+        <div id="preload">
+            <p>Segun cuales sean las caracteriticas y requerimientos de una paguina a la hora de ser cargada por el navegador, se puede dar el caso de que se requiera que ciertos scrips o elementos esten disponibles al momento de que los elementos seaa cargados, todo esto para el correcto funcionamento de la paguina, sin embago la forma en la que se cargan los diversos archivos que conforman una paguia web se encuentra ya establecida ya de antemano.</p>
+            <p>Existe una forma de asignar un elemeto o dato para que sea tratado con prioridad por el navegador a la hora de cargar la paguina, para que de ese modo este recurso este disponible al momento de que sea requerido, estipo de configuración se logra empleandolo en los metadatos de la paguina, más precisamente con el elemento <b>"link"</b> el cual posee el atributo <b>"rel"</b> el cual a su vez cuenta con el valor <b>"preload"</b>.</p>
+            <p>En otras palabras al aplicarse el valor <b>"preload"</b> en el atributo <b>"rel"</b> del alemento <b>"link"</b> se puede definir que algun elemento se cargue con antelación ya que este sera requerido rapidamente al cargarse la paguina, un aspecto a tener a cuenta de esta implementación es que pese a que el nombre de este valor contiene el termino 'precargar' realmente este no carga ni ejecuta ningun script, simplemente asigna que estos elementos seleccionados sean descargados y almacenados en cache con prioridad. </p>
+            <p>Por lo tanto el alemento <b>"link"</b> no solo se utiliza para cargar los estilos CSS de la paguina</p>
+            <img src="./img/ejmLinkPreload1.PNG" alt="">
+            <p>Si no que tambien tiene la función de designar algun elemento para que se precargue al iniciarse la carga de la paguina com se puede apreciar en el siguiete ejemplo:</p>
+            <img src="./img/ejmLinkPreload2.PNG" alt="">
+            <p>Este ejemplo a parte de simple puede parecer trivial sin embargo los veneficios de implmentar el preload se hacen notar a la hora de que los demás elementos HTML sean caegados, por ejemplo es util selecionar a los siguietes elementos para que sean precargados con antelación:</p>
+            <ul>
+                <li>Recursos a los que se les apunta desde dentro de CSS como fuentes o imagenes</li>
+                <li>Recursos que puedan solicitar JavaScrip como JSON scrips importados o web workers</li>
+                <li>imagenes más grandes y archivos de video</li>
+            </ul><br>
+            <p>Al emplear el <b>"preload"</b> es importante tener presente:</p>
+            <ul>
+                <li>La ruta hacia el recurso en cuestión</li>
+                <li>El de que tipo de recurso se trata</li>
+            </ul><br><br>
+            
+        </div>
+        <div id="recursos">
+            <h3>Atributo AS</h3>
+            <p>Es posible mejorar el rendimiento del "preload" con el atributo <b>"as"</b>, el cual se utiliza en conjunto con este y permite definir de que tipo de archivo se trata la precarga, al hacer esto se optienen las siguientes ventajas:</p>
+            <ul>
+                <li>Priorizar la carga de recursos con mayor presición</li>
+                <li>Almacenar el chache para futuras ocaciones reutilizando el recurso si es presiso</li>
+                <li>Aplicar la politica de seguridad correcta al recurso</li>
+                <li>Establecer los encabezados de solicitud de aceptación correctos</li>
+            </ul>
+            <p>Debido a que es posble precargar muchos tipos de archivos el atributo <b>"as"</b> posee muchos valores, algunos de estos son:</p>
+            <table>
+                <tr>
+                    <th>Valor del atributo</th>
+                    <th>Tipo de archivo</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr>
+                    <td><b>audio</b></td>
+                    <td>audio</td>
+                    <td>Define un archivo de audio, se incorpora igual que lo aria en un elemento "audio"</td>
+                </tr>
+                <tr>
+                    <td><b>document</b></td>
+                    <td>document</td>
+                    <td>Define un documento HTML que sera incrustado en un "frame" o un "iframe"</td>
+                </tr>
+                <tr>
+                    <td><b>embed</b></td>
+                    <td>Algún recurso</td>
+                    <td>Cualquier recurso que será incrustado en un "embed"</td>
+                </tr>
+                <tr>
+                    <td><b>fetch</b></td>
+                    <td>Recurso Fetch o XHR</td>
+                    <td>Recurso al que se accedera mendiante una solicitud fetch o XHR, como un archivo ArrayBuffer, WebAssembly/WASM binario o JSON </td>
+                </tr>
+                <tr>
+                    <td><b>font</b></td>
+                    <td>Fuente</td>
+                    <td>Define un archivo de fuente CSS</td>
+                </tr>
+                <tr>
+                    <td><b>image</b></td>
+                    <td>archivo de imagen</td>
+                    <td>Define la precarga de un archivo de imagen, normanlmente se usa para imagenes particularmente grandes</td>
+                </tr><tr>
+                    <td><b>object</b></td>
+                    <td>Algun Recurso</td>
+                    <td>Un recurso para ser incrustrado en un elemento "object"</td>
+                </tr>
+                <tr>
+                    <td><b>script</b></td>
+                    <td>ARchivo JS</td>
+                    <td>Define la precarga de un archivo JavaScrip</td>
+                </tr>
+                <tr>
+                    <td><b>style</b></td>
+                    <td>Estilos CSS</td>
+                    <td>Define la precarga de una hoja de estilos CSS</td>
+                </tr>
+                <tr>
+                    <td><b>track</b></td>
+                    <td> archivo WebVTT</td>
+                    <td>Define la carga de un archivo WebVTT</td>
+                </tr>
+                <tr>
+                    <td><b>worker</b></td>
+                    <td>worker web o JS</td>
+                    <td>Define la precarga de un worker de JavaScrip o un worker compartido</td>
+                </tr>
+                <tr>
+                    <td><b>video</b></td>
+                    <td>archivo de video</td>
+                    <td>Define la precarga de un archivo de video como los que se usan comunmente en los elementos "video"</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</body>
+</html>
