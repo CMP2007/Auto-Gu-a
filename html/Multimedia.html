@@ -190,6 +190,15 @@
             <p>Esto se realiza con la intención de que el navegador detecte la resolución a la que esta trabajando el computador y selecione la imagen acorde a esta, por lo tanto si el computador esta configurado con una resolución alta el navegador seleccionara una imagen con buena resolución, por otro lado si la configuración es para una resolución baja el navegador seleccionara la imagen con menor resolución, esto cobra sentido cuando tenemos en cuenta el espacio en memoria de cada imagen, ya que mientras mayor resolución mayor sera el peso de la imagen, de este modo podemos buscar la eficiencia de recursos  cargando solo los que sean necesarios en base al dispositivo desde el que se ingrese, un ejemplo de este codigo seria el sigueite: </p>
             <img src="./img/ejmImgResolucion.PNG" alt="">
         </div>
+        <div id="figcaption">
+            <h3>Figure y Figcaption</h3>
+            <p>Se trata de elemtos para indicar que un texto esta binculado con una imagen(pie de imagen), se trata de elemtos con valor semantico para el uso de leectores de pantalla o motores de busqueda</p>
+            <p>La forma de emplearlo es que junto al elemto de imagen ("img") este contenido en un "figure" y el elemento "figcaption" conteniendo el contenido del pie de paguina, de la siguiete manera:</p>
+            <img src="./img/ejmFigcaption.PNG" alt="">
+            <p>En este ejemplo el elemento "figcaption" dice al navegador, o a alguna tecnología de apoyo, que el texto que contiene describe la imagen que está contenida en el elemento "figure".</p>
+            <p><b>Nota: Desde el punto de vista de la accesibilidad, los pies de imagen y el texto alternativo (Atributo "alt") cumplen funciones diferentes. Los pies de imagen benefician incluso a quien puede ver la imagen, mientras que el texto "alt" proporciona la misma función en una imagen ausente. Por tanto, los subtítulos y el texto "alt" no deberían decir lo mismo, porque ambos aparecen si la imagen no se muestra.</b></p>
+            <p><b>Nota: Un elemento figure podría contener varias imágenes, un trozo de código, audio, video, ecuaciones, una tabla, o cualquier otra cosa no exclusibamente imagenes</b></p>
+           </div>
         <div id="object">
             <h3>Object</h3>
             <p>Representa junto con el elemento "embed" es una herramienta de incrustación de proposito general, en otras palabras se diferencia de "iframe" ya que "object" puede incrustar multiples tipos de contenido externo que incluyan tecnologuías de complemeto como Java Applets y Flash, en otras palabas puede ejecutar contenido externo y sus plug-in</p>

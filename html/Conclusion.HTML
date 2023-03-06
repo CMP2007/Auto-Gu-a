@@ -14,6 +14,9 @@
             <p>Algunas de las cosas que es necesario recordar al trabajar la estructura o funcionamiento de una paguina web con HTML son:</p>
             <ol>
                 <li>
+                    <p><b>Una buena practica es tomarse el tiempo de pensar y definir la estructura que tendra la paguina, desde el como se estructurará, conectara por cuantas paguinas estara compuesta, que contenido alvergara, y el como se quiere que se vea entre otros aspectos (siempre es bueno dibujar o plasmar las ideas en borradores o referencias visuales)</b></p>
+                </li>
+                <li>
                     <p>El anidamiento de las etiquetas debe de hacerse de forma correcta para evitar mal funcionamiento de los elementos, es decir el primer elementos en abrirse es el ultimo en cerrarse, y biceversa, por lo tanto nunca hay que mesclar el inicio y final de las etiquetas como se ve en el ejemplo, las etiquetas deben estar claramante dentro o fuera una de otras.</p>
                     <img src="./img/ejmRecordarAnidar.PNG" alt="">
                 </li>
@@ -31,7 +34,51 @@
                 <li>
                     <p>Dentro del elemento "head" no solo se definen los metadatos tambien se puede encotrar la descripción de la paguina para los moteres de busqueda</p>
                 </li>
-                <li>Los comentarios dentro de HTML se aperturan con "&lt;--" y se culminan con "--&gt;"</li>
+                <li>
+                    <p>Los comentarios dentro de HTML se aperturan con "&lt;!--" y se culminan con "--&gt;"</p>
+                </li>
+                <li>
+                    <p>El elemento "nav" de la barra de navegación se puede incluir como parte del encabezado o se puede manejar como un elemento independiente</p>
+                </li>
+                <li>
+                    <p>El elemento "main" solo deberia ser usado una vez por paguina ya que representa el contenido exclusivo de esta, tampoco deberia estar anidado dentro de otros elementos</p>
+                </li>
+                <li>
+                    <p>Nu utilizar demaciodos contenedores "div" ya que al no poseer un significado semantico puden ocacionar un codigo deficil de actualizar y mantener, lo recomendable es que solo se use si no existe una mejor opción para ese caso de uso</p>
+                </li>
+                
+                <li>
+                    <p>Solo aplicar un unico "h1" por paguina</p>
+                </li>
+                <li>
+                    <p>No usar más de tres niveles de titulos en un documento, si son necesarios usar más lo recomedable es separar el xontenido en diferentes paguinas</p>
+                </li>
+                <li>
+                    <p>Actualmente no es muy recomendable usar los elementos "b", "i" y "u" ya que al no aportan semantica, almenos que se de el caso de que se necesite transmitir el significado tradicional de las negritas, en este caso si no hay otro elemento mejor para hacer esto seria correcto su uso</p>
+                    <p>Recordemos sus usos tradicionales:</p>
+                    <ul>
+                        <li><b>&lt;i&gt;</b> se usa para transmitir el significado que tradicionalmente transmite la itálica: extranjerismos, clasificaciones taxonómicas, conceptos técnicos, un pensamiento...</li>
+                        <li><b>&lt;b&gt;</b> se usa para transmitir el significado que tradicionalmente transmite la negrita: palabras clave, nombres de productos, frases principales...</li>
+                        <li><b>&lt;u&gt;</b> se usa para transmitir el significado que tradicionalmente conlleva el subrayado: nombres propios, errores ortográficos...</li>
+                        <p><b>Nota: normalmete el subrayado se asocia con los hipervinculos por lo que se recomienda puntualizar su uso o cambiar los estilos con CSS</b></p>
+                    </ul>
+                </li>
+                <li>
+                    <p>Incluso los nombres de las imagenes son tomados en cuenta para el SEO (posicionamiento en los buscadores) de la paguina, por eso lo mejor es aplicar nombres descriptivos en estas</p>
+                </li>
+                <li>
+                    <p>Se puede incluir una imagen usando la URL absoluta o la URL relitiva, sin embargo aplicar la URL absoluta es desperdiciar tiempo y recursos ya que el navegador tiene que recorrer un camino más largo para encontrar la imgen, por lo tanto la solución más eficiente es usar la ruta relativa </p>
+                </li>
+                <li>
+                    <p>Si se adjunta una imagen de la que no se sea el propietario siempre tener presente:</p>
+                    <ul>
+                        <li>Tener un permiso escrito explicito del dueño de la imagen</li>
+                        <li>Se tetengan suficientes pruebas de que la imagen es de dominio público</li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Recordar el uso del atributo "alt"(texto alternativo) en los elementos "img" ya que esto se mostrara en los casos en que la imagen no pueda ser mostrada al usuario o se use un leector de pantalla </p>
+                </li>
             </ol>
         </div>
     </section>
